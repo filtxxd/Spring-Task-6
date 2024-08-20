@@ -25,10 +25,6 @@ public class CarController {
 
     @GetMapping
     public String getCars(@RequestParam(value = "count", required = false) Integer count, Model model) {
-        // Если count не передан, вернуть все машины
-        if (count == null || count >= carService.getAllCars().size()) {
-            count = carService.getAllCars().size();
-        }
 
         List<Car> cars = carService.getCars(count);
         model.addAttribute("cars", cars);
